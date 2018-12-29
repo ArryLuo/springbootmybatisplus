@@ -3,7 +3,9 @@ package com.arryluo.springbootmybatisplus.controller;
 
 
 import com.arryluo.springbootmybatisplus.entity.Users;
+import com.arryluo.springbootmybatisplus.mapper.TsModularapiMapper;
 import com.arryluo.springbootmybatisplus.service.INewtabService;
+import com.arryluo.springbootmybatisplus.service.ITsModularapiService;
 import com.arryluo.springbootmybatisplus.service.IUsersService;
 
 
@@ -34,13 +36,18 @@ public class UsersController {
     private IUsersService userMapper;
     @Autowired
     private INewtabService newtabService;
+    @Autowired
+    private ITsModularapiService tsModularapiMappers;
+    @Autowired
+    private TsModularapiMapper tsModularapiMapper;
     @RequestMapping("test")
     @ResponseBody
     public Object test(){
         //EntityWrapper
-        Map<String,Object>map=new HashMap<>();
-        map.put("username","gg");
-        System.out.println(newtabService.list(new QueryWrapper<>()));
-        return userMapper.listByMap(map);
+       /* Map<String,Object>map=new HashMap<>();
+        map.put("username","gg");*/
+        //System.out.println(newtabService.list(new QueryWrapper<>()));
+        System.out.println(tsModularapiMapper.sysInfo());
+        return tsModularapiMappers.list(new QueryWrapper<>());
     }
 }
